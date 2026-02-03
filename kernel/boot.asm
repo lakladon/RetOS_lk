@@ -1,5 +1,7 @@
+; @lakladon: Bootloader for RetOS minimal shell
 BITS 32
 
+; @lakladon: Multiboot2 header section
 section .multiboot
 align 8
 mb2_start:
@@ -13,10 +15,12 @@ mb2_start:
     dd 8
 mb2_end:
 
+; @lakladon: Text section with entry point
 section .text
 global _start
 extern kernel_main
 
+; @lakladon: Boot entry point
 _start:
     call kernel_main
 .hang:
